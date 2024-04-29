@@ -256,6 +256,8 @@ const RepoList = ({ repos }) => {
           >
             <MdAdd className="text-3xl text-gray-200" />
           </button>
+          <div>Create new Repo</div>
+
           {showModal && (
             <dialog open={showModal} className="modal">
               <div className="modal-box">
