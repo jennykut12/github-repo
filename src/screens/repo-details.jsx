@@ -8,7 +8,6 @@ import {
   FiCalendar,
   FiAlertCircle,
 } from "react-icons/fi";
-// import { FiStar, FiFork, FiEye, FiCalendar, FiAlertCircle } from "react-icons/fi";
 
 const RepoDetail = () => {
   const { name } = useParams();
@@ -96,7 +95,7 @@ const RepoDetail = () => {
         <p className="text-gray-600">{repo.description}</p>
       </header>
       <section className="grid gap-6 grid-cols-1 md:grid-cols-2">
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-4">Repository Details</h2>
           <ul>
             <li>
@@ -111,7 +110,6 @@ const RepoDetail = () => {
               <FiStar className="inline-block mr-2 text-gray-500" /> Stars:{" "}
               {repo.stargazers_count}
             </li>
-            {/* <li><FiFork className="inline-block mr-2 text-gray-500" /> Forks: {repo.forks_count}</li> */}
             <li>
               <FiEye className="inline-block mr-2 text-gray-500" /> Watchers:{" "}
               {repo.watchers_count}
@@ -132,7 +130,7 @@ const RepoDetail = () => {
             </li>
           </ul>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className=" rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-4">Contributors</h2>
         </div>
       </section>
