@@ -28,7 +28,6 @@ const Search = () => {
     if (debouncedSearchTerm) {
       fetchRepos();
     } else {
-      // Reset repository list when search term is empty
       setRepoList([]);
     }
   }, [debouncedSearchTerm]);
@@ -38,26 +37,26 @@ const Search = () => {
   };
 
   return (
-      <form className="flex flex-col items-start">
-        <div className="gap-2 w-[35vw] flex items-center justify-between input input-md input-bordered">
-          <input
-            type="text"
-            id="mySearch"
-            name="repo"
-            value={searchTerm}
-            placeholder="Search"
-            className="text-lg"
-            onChange={handleChange}
-          />
-          <MdOutlineSearch className=" text-xl" />
-        </div>
-        <ul className=" p-5 rounded-lg">
+    <form className="flex flex-col items-start">
+      <div className="gap-2 w-[35vw] flex items-center justify-between input input-md input-bordered">
+        <input
+          type="text"
+          id="mySearch"
+          name="repo"
+          value={searchTerm}
+          placeholder="Search"
+          className="text-lg"
+          onChange={handleChange}
+        />
+        <MdOutlineSearch className=" text-xl" />
+      </div>
+      <ul className=" p-5 rounded-lg">
         {repoList.map((repo) => (
           <li key={repo.id}>{repo.name}</li>
         ))}
       </ul>
-      </form>
-        );
+    </form>
+  );
 };
 
 export default Search;
