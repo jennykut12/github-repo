@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import ErrorHandling from "./error-boundary";
 import { FaShareAlt, FaCode, FaStar } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
@@ -123,8 +123,18 @@ const RepoList = ({ repos }) => {
     }
   };
 
-  const handleDeleteRepo = async (name) => {
+  const handleDeleteRepo = async (name, createdAt) => {
     try {
+      const repoCreationDate = new Date(createdAt);
+
+      const targetDeletionDate = new Date(2024, 3, 27);
+
+      if (repoCreationDate.getTime() < targetDeletionDate.getTime()) {
+        throw new Error(
+          "Repositories created before April 27, 2024 cannot be deleted"
+        );
+      }
+
       const response = await fetch(
         `https://api.github.com/repos/jennykut12/${name}`,
         {
@@ -209,7 +219,9 @@ const RepoList = ({ repos }) => {
                   <div>
                     <button
                       className="btn btn-sm btn-ghost "
-                      onClick={() => handleDeleteRepo(data.name)}
+                      onClick={() =>
+                        handleDeleteRepo(data.name, data.created_at)
+                      }
                     >
                       Delete
                     </button>
